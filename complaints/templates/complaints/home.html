@@ -1,0 +1,28 @@
+{% extends 'complaints/base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Dashboard</h2>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="card shadow-sm p-3">
+            <h6>Total Complaints</h6>
+            <h2>{{ total }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm p-3">
+            <h6>Pending</h6>
+            <h2 class="text-warning">{{ pending }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm p-3">
+            <h6>Resolved</h6>
+            <h2 class="text-success">{{ resolved }}</h2>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,32 +1,20 @@
-{% extends 'complaints/base.html' %}
-
-{% block title %}My Complaints{% endblock %}
+{% extends "complaints/base.html" %}
 
 {% block content %}
-<h3>My Complaints</h3>
+<h1>My Complaints</h1>
 
-<table class="table table-bordered mt-3">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Status</th>
-            <th>Created At</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for complaint in complaints %}
-        <tr>
-            <td>{{ complaint.title }}</td>
-            <td>{{ complaint.category }}</td>
-            <td>{{ complaint.status }}</td>
-            <td>{{ complaint.created_at }}</td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="4">No complaints submitted.</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="stats-grid">
+{% for complaint in complaints %}
+  <div class="stat-card">
+    <h3>{{ complaint.title }}</h3>
+    <p class="status" data-status="{{ complaint.status }}">
+  {{ complaint.status }}
+</p>
+
+    <p>Category: {{ complaint.category }}</p>
+  </div>
+{% empty %}
+  <p>No complaints found.</p>
+{% endfor %}
+</div>
 {% endblock %}

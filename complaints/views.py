@@ -3,6 +3,24 @@ from django.contrib.auth.decorators import login_required
 from .models import Complaint
 from .forms import ComplaintForm
 from django.http import HttpResponseForbidden
+from django.shortcuts import render
+
+
+
+@login_required
+def dashboard(request):
+    complaints = Complaint.objects.filter(created_by=request.user)
+
+    context = {
+        'total': complaints.count(),
+        'pending': complaints.filter(status='PENDING').count(),
+        'resolved': complaints.filter(status='RESOLVED').count(),
+    }
+
+    return render(request, 'complaints/dashboard.html', context)
+
+
+
 
 @login_required
 def create_complaint(request):
@@ -12,7 +30,8 @@ def create_complaint(request):
             complaint = form.save(commit=False)
             complaint.created_by = request.user
             complaint.save()
-            return redirect('my_complaints')
+            return redirect('/')
+
     else:
         form = ComplaintForm()
 
@@ -48,3 +67,8 @@ def update_status(request, complaint_id):
         return redirect('all_complaints')
 
     return render(request, 'complaints/update_status.html', {'complaint': complaint})
+
+
+
+
+

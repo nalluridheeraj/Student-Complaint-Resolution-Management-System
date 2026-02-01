@@ -1,0 +1,22 @@
+{% extends "complaints/base.html" %}
+
+{% block content %}
+<h1>Dashboard</h1>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <h3>Total Complaints</h3>
+        <div class="stat-number">{{ total }}</div>
+    </div>
+
+    <div class="stat-card">
+        <h3>Pending</h3>
+        <div class="stat-number">{{ pending }}</div>
+    </div>
+
+    <div class="stat-card">
+        <h3>Resolved</h3>
+        <div class="stat-number">{{ resolved }}</div>
+    </div>
+</div>
+{% endblock %}
