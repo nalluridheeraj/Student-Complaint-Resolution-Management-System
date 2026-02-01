@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Complaints</title>
+</head>
+<body>
+
+<h2>My Complaints</h2>
+
+<ul>
+    {% for complaint in complaints %}
+        <li>
+            <strong>{{ complaint.title }}</strong> |
+            {{ complaint.category }} |
+            {{ complaint.status }}
+        </li>
+    {% empty %}
+        <li>No complaints submitted.</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

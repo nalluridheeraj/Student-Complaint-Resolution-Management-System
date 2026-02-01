@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Complaints</title>
+</head>
+<body>
+
+<h2>All Complaints</h2>
+
+<ul>
+    {% for complaint in complaints %}
+        <li>
+            <strong>{{ complaint.title }}</strong> |
+            {{ complaint.category }} |
+            {{ complaint.status }}
+            <a href="{% url 'update_status' complaint.id %}">Update</a>
+        </li>
+    {% empty %}
+        <li>No complaints found.</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

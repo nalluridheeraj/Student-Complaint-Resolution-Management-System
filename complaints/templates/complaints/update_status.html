@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Status</title>
+</head>
+<body>
+
+<h2>Update Complaint Status</h2>
+
+<p><strong>{{ complaint.title }}</strong></p>
+
+<form method="post">
+    {% csrf_token %}
+    <select name="status">
+        <option value="PENDING">Pending</option>
+        <option value="IN_PROGRESS">In Progress</option>
+        <option value="RESOLVED">Resolved</option>
+    </select>
+    <button type="submit">Update</button>
+</form>
+
+</body>
+</html>
