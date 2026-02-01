@@ -1,23 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Complaints</title>
-</head>
-<body>
+{% extends 'complaints/base.html' %}
 
-<h2>My Complaints</h2>
+{% block title %}My Complaints{% endblock %}
 
-<ul>
-    {% for complaint in complaints %}
-        <li>
-            <strong>{{ complaint.title }}</strong> |
-            {{ complaint.category }} |
-            {{ complaint.status }}
-        </li>
-    {% empty %}
-        <li>No complaints submitted.</li>
-    {% endfor %}
-</ul>
+{% block content %}
+<h3>My Complaints</h3>
 
-</body>
-</html>
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for complaint in complaints %}
+        <tr>
+            <td>{{ complaint.title }}</td>
+            <td>{{ complaint.category }}</td>
+            <td>{{ complaint.status }}</td>
+            <td>{{ complaint.created_at }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No complaints submitted.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

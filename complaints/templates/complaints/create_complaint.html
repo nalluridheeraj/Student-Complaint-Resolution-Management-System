@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create Complaint</title>
-</head>
-<body>
+{% extends 'complaints/base.html' %}
 
-<h2>Create Complaint</h2>
+{% block title %}Create Complaint{% endblock %}
 
-<form method="post">
+{% block content %}
+<h3>Create Complaint</h3>
+
+<form method="post" class="mt-3">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
-</body>
-</html>
+{% endblock %}

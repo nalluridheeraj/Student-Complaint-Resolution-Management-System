@@ -1,23 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Update Status</title>
-</head>
-<body>
+{% extends 'complaints/base.html' %}
 
-<h2>Update Complaint Status</h2>
+{% block title %}Update Status{% endblock %}
+
+{% block content %}
+<h3>Update Complaint Status</h3>
 
 <p><strong>{{ complaint.title }}</strong></p>
 
 <form method="post">
     {% csrf_token %}
-    <select name="status">
+    <select name="status" class="form-select w-25">
         <option value="PENDING">Pending</option>
         <option value="IN_PROGRESS">In Progress</option>
         <option value="RESOLVED">Resolved</option>
     </select>
-    <button type="submit">Update</button>
+    <button type="submit" class="btn btn-success mt-3">Update</button>
 </form>
-
-</body>
-</html>
+{% endblock %}
